@@ -1,0 +1,70 @@
+
+<ion-header color="primary">
+
+  <ion-navbar color="primary">
+    <ion-title>profil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-fab top right edge color="secondary">
+    <button ion-fab  (tap)="refresh()" color="light"><ion-icon name="ribbon" ></ion-icon></button>
+    <!-- <ion-img width="80" height="80" src="../../assets/imgs/cocktail.png"></ion-img> -->
+    <!-- <button ion-fab  (tap)="refresh()" color="light" ><ion-icon  ></ion-icon></button>  -->
+  </ion-fab>
+
+  <ion-card>
+  <ion-item>
+
+    <h2>{{fields.Prenom}} {{fields.Nom}}</h2>
+    <p>{{fields.BTS}}</p>
+
+
+
+  <ion-card-content>
+    <p>L'id est le : {{fields.id}} </p>
+  </ion-card-content>
+  <ion-col center text-center>
+      <ion-icon name="ice-cream"></ion-icon> Nombre de Boisson : {{fields.Boisson}}
+  </ion-col>
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small (tap)="UpDrink()">
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>Up </div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small (tap)="DownDrink()">
+        <ion-icon name="thumbs-down"></ion-icon>
+        <div> Down</div>
+      </button>
+    </ion-col>
+    <button ion-button icon-start outline (tap)="SavePrence()" *ngIf="fields.Valide ===False" >
+
+      <ion-icon name="star"></ion-icon>
+      Enresgister sa présence
+    </button>
+    <button ion-button icon-start outline color ="secondary" *ngIf="fields.Valide ===True" >
+      <ion-icon name="star"></ion-icon>
+      Enresgister
+    </button>
+
+  </ion-row>
+</ion-item>
+</ion-card>
+
+<br><br>
+<ion-card>
+<ion-item>
+
+  <h2><u>Vestiaire : </u></h2>
+</ion-item>
+
+</ion-card>
+</ion-content>
+
+<!-- *ngIf="fields.Boisson == 'False'" -->
