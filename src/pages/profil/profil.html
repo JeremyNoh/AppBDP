@@ -59,11 +59,29 @@
 
 <br><br>
 <ion-card>
-<ion-item>
 
-  <h2><u>Vestiaire : </u></h2>
-</ion-item>
-
+<ion-list>
+  <ion-item>
+    <ion-label>Vestiaire : </ion-label>
+    <ion-select [(ngModel)]="Vestiaire" multiple="true" cancelText="Nah" okText="Valider!" ionCancel="saveVestiaire()" >
+      <ion-option value="Veste" >Veste</ion-option>
+      <ion-option value="Sac">Sac</ion-option>
+      <ion-option value="chapeau" >chapeau</ion-option>
+      <ion-option value="Echarpe">Echarpe</ion-option>
+      <ion-option value="Vetement">Vetement</ion-option>
+      <ion-option value="chaussures">chaussures</ion-option>
+      <ion-option value="Bijoux">Bijoux</ion-option>
+            <ion-option value="Parapluie">Parapluie</ion-option>
+      <ion-option value="Autres">Autres..</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+<p>{{Vestiaire}}</p>
+<button ion-button icon-left clear small (tap)="saveVestiaire()">
+  <ion-icon name="shirt"></ion-icon>
+  <div> Valider</div>
+</button>
+<!-- <button ion-button outline (tap)="saveVestiaire()" >Mettre a Jour son Vestiaire</button> -->
 </ion-card>
 </ion-content>
 

@@ -17,6 +17,7 @@ export class ProfilPage {
   fields = this.navParams.get('fields');
   id = this.navParams.get('id');
   isValid = this.fields.Valide;
+  Vestiaire = undefined ;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: HttpClient,private alertCtrl: AlertController,public loadingCtrl: LoadingController) {
@@ -142,8 +143,12 @@ export class ProfilPage {
         // fin test
   }
 
-  refresh(){
+  saveVestiaire() {
+    console.log(this.Vestiaire);
+  }
 
+  refresh(){
+    console.log(this.Vestiaire);
   }
 
 }
