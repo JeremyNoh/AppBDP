@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "AppBDP",
+  "short_name": "AppBDP",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
