@@ -43,15 +43,18 @@
         <div> Down</div>
       </button>
     </ion-col>
-    <button ion-button icon-start outline (tap)="SavePrence()" *ngIf="fields.Valide ===False" >
 
-      <ion-icon name="star"></ion-icon>
-      Enresgister sa présence
-    </button>
-    <button ion-button icon-start outline color ="secondary" *ngIf="fields.Valide ===True" >
-      <ion-icon name="star"></ion-icon>
-      Enresgister
-    </button>
+      <button ion-button icon-start outline (tap)="SavePrence()" *ngIf="fields.Valide === 'False'">
+        <ion-icon name="star"></ion-icon>
+        Enresgister sa présence
+      </button>
+
+
+      <button ion-button icon-start outline color ="secondary"  (tap)="UnSavePrence()" *ngIf="fields.Valide === 'True'" >
+        <ion-icon name="checkmark-circle"></ion-icon>
+        Enresgister
+      </button>
+
 
   </ion-row>
 </ion-item>
@@ -81,7 +84,6 @@
   <ion-icon name="shirt"></ion-icon>
   <div> Valider</div>
 </button>
-<!-- <button ion-button outline (tap)="saveVestiaire()" >Mettre a Jour son Vestiaire</button> -->
 </ion-card>
 </ion-content>
 
