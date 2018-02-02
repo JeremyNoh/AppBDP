@@ -172,6 +172,31 @@ export class ProfilPage {
 
         saveVestiaire() {
           console.log(this.Vestiaire);
+          let url = `https://api.airtable.com/v0/appRzgYd2sozz8l2P/personne/${this.id}?api_key=keyAER9NsfEje3klJ`;
+          this.funLoading();
+          this.http.put(url,
+            {"fields":{"id":this.fields.id,"Prenom":this.fields.Prenom,"BTS":this.fields.BTS,"Valide":this.fields.Valide,"Boisson":this.fields.Boisson,"Nom":this.fields.Nom,"Vestiaire" : this.Vestiaire}})
+            .subscribe(
+              val => {
+                console.log("PUT call successful value returned in body",
+                val);
+              },
+              response => {
+                console.log("PUT call in error", response);
+              },
+              () => {
+                this.fields.Vestiaire = this.Vestiaire;
+
+                let alert = this.alertCtrl.create({
+                  title: 'Modification Vestiaire',
+                  subTitle: 'le Visiteur a charger son Vestiaire',
+                  buttons: ['Fermer']
+                });
+                alert.present();
+              }
+            );
+
+          // fin saveVestiaire
         }
 
         refresh(){
