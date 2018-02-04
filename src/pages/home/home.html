@@ -25,10 +25,21 @@
   <p>
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   </p>
-  <ion-item *ngFor="let item of items; "  (click)="goToOtherPage(item)">
-      {{ item }}
 
-  </ion-item>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items;" >
+      <ion-item  (tap)="goToOtherPage(item)">
+        {{ item }}
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (tap)="SavePrence(item)">Save</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <!-- Ancienne version -->
+  <!-- <ion-item *ngFor="let item of items; "  (click)="goToOtherPage(item)">
+      {{ item }}
+  </ion-item> -->
 </ion-content>
 
 <ion-footer>

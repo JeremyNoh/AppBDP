@@ -124,13 +124,52 @@ export class HomePage {
         refresher.complete();
     })
     // fin get api
-
-
-
   }
 
 
+  SavePrence(item){
+    let resVisiteur = this.results[this.tableau.indexOf(item)];
+    let id =  resVisiteur.id ;
 
+    console.log(id);
+    let url = `https://api.airtable.com/v0/appRzgYd2sozz8l2P/personne/${id}?api_key=keyAER9NsfEje3klJ`;
+    this.funLoading();
+    this.http.patch(url,
+      {"fields":{"Valide":"True"}})
+      .subscribe(
+        val => {
+          console.log("PUT call successful value returned in body",
+          val);
+        },
+        response => {
+          console.log("PUT call in error", response);
+        },
+        () => {
+
+          let alert = this.alertCtrl.create({
+            title: 'Visiteur Enregistrer',
+            subTitle: 'Visiteur Enregistrer !!',
+            buttons: ['Fermer']
+          });
+          alert.present();
+        }
+      );
+
+
+    }
+
+
+    funLoading (){
+      let loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+
+      loading.present();
+
+      setTimeout(() => {
+        loading.dismiss();
+      }, 1000);
+    }
 
   // fin test
   }
