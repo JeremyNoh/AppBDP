@@ -128,8 +128,7 @@ export class HomePage {
 
 
   SavePrence(item){
-    let resVisiteur = this.results[this.tableau.indexOf(item)];
-    let id =  resVisiteur.id ;
+    let id = this.results[this.tableau.indexOf(item)].id ;
 
     console.log(id);
     let url = `https://api.airtable.com/v0/appRzgYd2sozz8l2P/personne/${id}?api_key=keyAER9NsfEje3klJ`;
@@ -152,6 +151,7 @@ export class HomePage {
             buttons: ['Fermer']
           });
           alert.present();
+          this.results[this.tableau.indexOf(item)].fields.Valide = "True";
         }
       );
 

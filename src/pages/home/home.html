@@ -30,6 +30,8 @@
     <ion-item-sliding *ngFor="let item of items;" >
       <ion-item  (tap)="goToOtherPage(item)">
         {{ item }}
+        <!-- <ion-icon   item-end color= "secondary" name="checkmark-circle"></ion-icon> -->
+
       </ion-item>
       <ion-item-options side="left">
         <button ion-button color="secondary" (tap)="SavePrence(item)">Save</button>
