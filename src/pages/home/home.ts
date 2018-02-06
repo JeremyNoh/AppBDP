@@ -23,6 +23,15 @@ export class HomePage {
   public tableauValide: any = [];
   VisiteurPresent : number = 0;
   VisiteurInscrit : string = '';
+  public tabVal: any = [];
+
+   HEROES = [
+    {id: 1, name:'Superman'},
+    {id: 2, name:'Batman'},
+    {id: 5, name:'BatGirl'},
+    {id: 3, name:'Robin'},
+    {id: 4, name:'Flash'}
+];
 
 
 
@@ -70,8 +79,9 @@ export class HomePage {
   this.items = this.tableau;
 
  }
-  // debut test
+
   getItems(ev: any) {
+    
       // Reset items back to all of the items
       this.initializeItems();
 

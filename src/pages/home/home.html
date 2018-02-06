@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Home
+      Bal de Promo
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -26,12 +26,13 @@
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   </p>
 
+
   <ion-list>
-    <ion-item-sliding *ngFor="let item of items;" >
+    <ion-item-sliding *ngFor="let item of items; " >
       <ion-item  (tap)="goToOtherPage(item)">
         {{ item }}
         <!-- <ion-icon   item-end color= "secondary" name="checkmark-circle"></ion-icon> -->
-
+        <!-- *ngIf="fields.Valide === 'False'" -->
       </ion-item>
       <ion-item-options side="left">
         <button ion-button color="secondary" (tap)="SavePrence(item)">Save</button>

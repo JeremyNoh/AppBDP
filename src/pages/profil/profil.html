@@ -25,34 +25,38 @@
 
 
   <ion-card-content>
-    <p>L'id est le : {{fields.id}} </p>
+    <p>id : {{fields.id}} </p>
   </ion-card-content>
   <ion-col center text-center>
-      <ion-icon name="ice-cream"></ion-icon> Nombre de Boisson : {{fields.Boisson}}
+      <ion-icon name="wine"></ion-icon> Nombre de Boisson : {{fields.Boisson}}
   </ion-col>
   <ion-row>
     <ion-col>
-      <button ion-button icon-left clear small (tap)="UpDrink()">
-        <ion-icon name="thumbs-up"></ion-icon>
+      <button ion-button icon-left  small (tap)="UpDrink()">
+        <ion-icon name="add-circle"></ion-icon>
         <div>Up </div>
       </button>
     </ion-col>
     <ion-col>
-      <button ion-button icon-left clear small (tap)="DownDrink()">
-        <ion-icon name="thumbs-down"></ion-icon>
+      <button ion-button icon-left  small (tap)="DownDrink()" *ngIf="fields.Boisson > 0 " >
+        <ion-icon name="remove-circle"></ion-icon>
         <div> Down</div>
+      </button>
+      <button ion-button icon-left  small color="danger" (tap)="errorBoison()" *ngIf="fields.Boisson <= 0 "  >
+        <ion-icon name="close-circle"></ion-icon>
+        <div> Quota Indisponible</div>
       </button>
     </ion-col>
 
       <button ion-button icon-start outline (tap)="SavePrence()" *ngIf="fields.Valide === 'False'">
         <ion-icon name="star"></ion-icon>
-        Enresgister sa présence
+        Enregistrer sa présence
       </button>
-
+<!-- clear; thumbs-up; -->
 
       <button ion-button icon-start outline color ="secondary"  (tap)="UnSavePrence()" *ngIf="fields.Valide === 'True'" >
         <ion-icon name="checkmark-circle"></ion-icon>
-        Enresgister
+        Visiteur Enregistrer !!
       </button>
 
 
@@ -61,7 +65,9 @@
 </ion-card>
 
 <br><br>
+
 <ion-card>
+
 
 <ion-list>
   <ion-item>
@@ -78,7 +84,7 @@
   </ion-item>
 </ion-list>
 <p>{{Vestiaire}}</p>
-<button ion-button icon-left clear small (tap)="saveVestiaire()">
+<button ion-button icon-left  small (tap)="saveVestiaire()">
   <ion-icon name="shirt"></ion-icon>
   <div> Valider</div>
 </button>

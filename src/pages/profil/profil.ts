@@ -134,7 +134,7 @@ export class ProfilPage {
               this.fields.Valide = "True";
 
               let alert = this.alertCtrl.create({
-                title: 'Visiteur Enregistrer',
+                title: ' Modification Visiteur ',
                 subTitle: 'Visiteur Enregistrer !!',
                 buttons: ['Fermer']
               });
@@ -161,7 +161,7 @@ export class ProfilPage {
                 this.fields.Valide = "False";
 
                 let alert = this.alertCtrl.create({
-                  title: 'Visiteur Annuler',
+                  title: 'Modification Visiteur',
                   subTitle: 'Visiteur Retirer  !!',
                   buttons: ['Fermer']
                 });
@@ -197,6 +197,14 @@ export class ProfilPage {
             );
 
           // fin saveVestiaire
+        }
+        errorBoison(){
+          let alert = this.alertCtrl.create({
+            title: 'Quota Boisson Visiteur',
+            subTitle: 'quota de Boisson insuffiante ',
+            buttons: ['Fermer']
+          });
+          alert.present();
         }
 
         refresh(){
