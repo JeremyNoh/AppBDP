@@ -19,16 +19,29 @@ export class ProfilPage {
   isValid = this.fields.Valide;
   // Vestiaire = undefined ;
   Vestiaire = this.fields.Vestiaire;
+  nbrVestiaire = 0 ;
 
+  // nbrVestiaire = fields.Vestiaire.length : 0;
+
+  // nbrVestiaire = fields.Vestiaire.length || 0;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: HttpClient,private alertCtrl: AlertController,public loadingCtrl: LoadingController) {
+    this.nbrVestiaireFun();
   }
 
   ionViewDidLoad() {
     console.log(this.fields);
-    console.log(this.fields.Vestiaire);
 
+  }
+
+  nbrVestiaireFun(){
+    if(this.Vestiaire=== undefined){
+      this.nbrVestiaire = 0;
+    }
+    else{
+      this.nbrVestiaire = this.fields.Vestiaire.length ;
+    }
   }
 
   funLoading (){
@@ -186,7 +199,7 @@ export class ProfilPage {
               },
               () => {
                 this.fields.Vestiaire = this.Vestiaire;
-
+                this.nbrVestiaire = this.fields.Vestiaire.length ;
                 let alert = this.alertCtrl.create({
                   title: 'Modification Vestiaire',
                   subTitle: 'le Visiteur a charger son Vestiaire',
@@ -198,6 +211,7 @@ export class ProfilPage {
 
           // fin saveVestiaire
         }
+
         errorBoison(){
           let alert = this.alertCtrl.create({
             title: 'Quota Boisson Visiteur',

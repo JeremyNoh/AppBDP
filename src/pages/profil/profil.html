@@ -2,93 +2,95 @@
 <ion-header color="primary">
 
   <ion-navbar color="primary">
-    <ion-title>profil</ion-title>
+    <ion-title>{{fields.Prenom}} {{fields.Nom}}</ion-title>
+    {{fields.BTS}}
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding  text-center>
 
   <ion-fab top right edge color="secondary">
-    <button ion-fab  (tap)="refresh()" color="light"><ion-icon name="ribbon" ></ion-icon></button>
-    <!-- <ion-img width="80" height="80" src="../../assets/imgs/cocktail.png"></ion-img> -->
-    <!-- <button ion-fab  (tap)="refresh()" color="light" ><ion-icon  ></ion-icon></button>  -->
+    <button ion-fab  (tap)="refresh()" color="light">{{fields.id}}</button>
   </ion-fab>
 
+
+
   <ion-card>
-  <ion-item>
 
-    <h2>{{fields.Prenom}} {{fields.Nom}}</h2>
-    <p>{{fields.BTS}}</p>
+    <ion-card-header>
+      <ion-icon name="wine"></ion-icon> Boisson : {{fields.Boisson}}
+    </ion-card-header>
+  <br>
 
+    <ion-card-content>
+      <ion-col>
+        <button ion-button icon-left  small (tap)="UpDrink()">
+          <ion-icon name="add-circle"></ion-icon>
+          <div>Up </div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left  small (tap)="DownDrink()" *ngIf="fields.Boisson > 0 " >
+          <ion-icon name="remove-circle"></ion-icon>
+          <div> Down</div>
+        </button>
+        <button ion-button icon-left  small color="danger" (tap)="errorBoison()" *ngIf="fields.Boisson <= 0 "  >
+          <ion-icon name="close-circle"></ion-icon>
+          <div> Quota Indisponible</div>
+        </button>
+      </ion-col>
+    </ion-card-content>
 
-
-  <ion-card-content>
-    <p>id : {{fields.id}} </p>
-  </ion-card-content>
-  <ion-col center text-center>
-      <ion-icon name="wine"></ion-icon> Nombre de Boisson : {{fields.Boisson}}
-  </ion-col>
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left  small (tap)="UpDrink()">
-        <ion-icon name="add-circle"></ion-icon>
-        <div>Up </div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left  small (tap)="DownDrink()" *ngIf="fields.Boisson > 0 " >
-        <ion-icon name="remove-circle"></ion-icon>
-        <div> Down</div>
-      </button>
-      <button ion-button icon-left  small color="danger" (tap)="errorBoison()" *ngIf="fields.Boisson <= 0 "  >
-        <ion-icon name="close-circle"></ion-icon>
-        <div> Quota Indisponible</div>
-      </button>
-    </ion-col>
-
-      <button ion-button icon-start outline (tap)="SavePrence()" *ngIf="fields.Valide === 'False'">
-        <ion-icon name="star"></ion-icon>
-        Enregistrer sa présence
-      </button>
-<!-- clear; thumbs-up; -->
-
-      <button ion-button icon-start outline color ="secondary"  (tap)="UnSavePrence()" *ngIf="fields.Valide === 'True'" >
-        <ion-icon name="checkmark-circle"></ion-icon>
-        Visiteur Enregistrer !!
-      </button>
+  </ion-card>
+  <br>
 
 
-  </ion-row>
-</ion-item>
-</ion-card>
+  <ion-card>
+    <ion-card-header style="background-color: '#dedede96';">
+      <ion-icon name="shirt"></ion-icon> Vestiaire : {{nbrVestiaire}}
+    </ion-card-header>
 
-<br><br>
+  <ion-list>
 
-<ion-card>
+      <ion-item>
+        <ion-label>Choississez : </ion-label>
+        <ion-select [(ngModel)]="Vestiaire" multiple="true" cancelText="Nah" okText="Valider!" ionCancel="saveVestiaire()"  selectedText = " " placeholder=" " >
+          <ion-option value="Veste" >Veste</ion-option>
+          <ion-option value="Sac">Sac</ion-option>
+          <ion-option value="Chapeau" >Chapeau</ion-option>
+          <ion-option value="Echarpe">Echarpe</ion-option>
+          <ion-option value="Accessoire">Accessoire</ion-option>
+          <ion-option value="Parapluie">Parapluie</ion-option>
+          <!-- <ion-option value="Autres">Autres..</ion-option> -->
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-item-divider *ngFor="let item of Vestiaire; " >
+      {{item}}
+    </ion-item-divider>
+
+    <!-- <ion-item>Argentina</ion-item> -->
+
+    <button ion-button icon-left  small (tap)="saveVestiaire()">
+      <div> Valider</div>
+    </button>
+  </ion-card>
+  <br>
+
+    <button  ion-button  outline (tap)="SavePrence()" *ngIf="fields.Valide === 'False'">
+      <ion-icon name="star"></ion-icon>
+      Enregistrer sa présence
+    </button>
+    <!-- clear; thumbs-up; -->
+
+    <button  ion-button icon-only outline  color ="secondary"  (tap)="UnSavePrence()" *ngIf="fields.Valide === 'True'" >
+      <ion-icon name="checkmark-circle"></ion-icon>
+      Visiteur Enregistrer !!
+    </button>
 
 
-<ion-list>
-  <ion-item>
-    <ion-label>Vestiaire : </ion-label>
-    <ion-select [(ngModel)]="Vestiaire" multiple="true" cancelText="Nah" okText="Valider!" ionCancel="saveVestiaire()" >
-      <ion-option value="Veste" >Veste</ion-option>
-      <ion-option value="Sac">Sac</ion-option>
-      <ion-option value="Chapeau" >Chapeau</ion-option>
-      <ion-option value="Echarpe">Echarpe</ion-option>
-      <ion-option value="Accessoire">Accessoire</ion-option>
-      <ion-option value="Parapluie">Parapluie</ion-option>
-      <!-- <ion-option value="Autres">Autres..</ion-option> -->
-    </ion-select>
-  </ion-item>
-</ion-list>
-<p>{{Vestiaire}}</p>
-<button ion-button icon-left  small (tap)="saveVestiaire()">
-  <ion-icon name="shirt"></ion-icon>
-  <div> Valider</div>
-</button>
-</ion-card>
 </ion-content>
 
 <!-- *ngIf="fields.Boisson == 'False'" -->
