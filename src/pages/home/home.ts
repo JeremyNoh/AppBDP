@@ -23,15 +23,7 @@ export class HomePage {
   public tableauValide: any = [];
   VisiteurPresent : number = 0;
   VisiteurInscrit : string = '';
-  public tabVal: any = [];
 
-   HEROES = [
-    {id: 1, name:'Superman'},
-    {id: 2, name:'Batman'},
-    {id: 5, name:'BatGirl'},
-    {id: 3, name:'Robin'},
-    {id: 4, name:'Flash'}
-];
 
 
 
@@ -39,7 +31,8 @@ export class HomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: HttpClient,private alertCtrl: AlertController,public loadingCtrl: LoadingController) {
     // this.initializeItems();
 
-    // get api
+  }
+  ionViewWillEnter() {
     this.http.get('https://api.airtable.com/v0/appRzgYd2sozz8l2P/personne/?api_key=keyAER9NsfEje3klJ').subscribe(data => {
         this.results = [];
         this.tableau = [];
@@ -58,13 +51,8 @@ export class HomePage {
         // compte le nombre d'inscrit
         this.VisiteurInscrit = this.results.length;
 
-
     })
-    // fin get api
-
-  }
-
-
+   }
   initializeItems() {
   //  this.items = [
   //    "Jeremy Nohile",
@@ -81,7 +69,7 @@ export class HomePage {
  }
 
   getItems(ev: any) {
-    
+
       // Reset items back to all of the items
       this.initializeItems();
 
