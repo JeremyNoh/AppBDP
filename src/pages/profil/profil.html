@@ -1,9 +1,8 @@
 
 <ion-header color="primary">
 
-  <ion-navbar color="primary">
+  <ion-navbar color="headerColors">
     <ion-title>{{fields.Prenom}} {{fields.Nom}}</ion-title>
-    {{fields.BTS}}
   </ion-navbar>
 
 </ion-header>
@@ -92,5 +91,10 @@
 
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title><p>{{fields.BTS}}</p></ion-title>
+  </ion-toolbar>
+</ion-footer>
 
 <!-- *ngIf="fields.Boisson == 'False'" -->
